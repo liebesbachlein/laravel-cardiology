@@ -1,0 +1,178 @@
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@0,400;0,700;1,400;1,700&family=Viaoda+Libre&family=El+Messiri:wght@400;500;600;700&family=Noto+Sans+Display:wght@400;500;600&family=Tenor+Sans&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Scada:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+:root {
+    --component-accent-color1: #D22B2B;
+    --bright-red: #EE4B2B;
+    --odd-blue-color: #219CC4;
+    --component-accent-color2: #3E8EDE;
+    --component-grey-color: #f6f9fe;
+    --light-grey: #f6f9fe;
+    --plain-text-font: "Jost", sans-serif;
+    --simple-font: "Roboto", sans-serif;
+    --cursive-font: 'Philosopher', sans-serif;
+    --news-title-font: 'Viaoda Libre', serif;
+    --messiri-font: 'Philosopher', sans-serif;
+    --sans-serif-font: "Noto Sans Display", sans-serif;
+    --tenor-font: "Tenor Sans", sans-serif;
+    --scada-font: "Scada", sans-serif;
+    --merri-font: "Merriweather", serif;
+    --header-line: transparent;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    transition: all 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    scroll-behavior: smooth;
+}
+
+.subpage-title {
+    font-family: var(--messiri-font);
+    font-weight: 400;
+    font-size: 2rem;
+    color: #2D2D2D;
+    margin-bottom: 2rem;
+}
+
+h1, h2, h3, h4, h5, h6, p, pre, div {
+    font-family: var(--plain-text-font);
+    color: #2D2D2D;
+    font-weight: 400;
+}
+
+
+p {
+    font-size: 1.0625rem;
+    white-space: pre-line;
+}
+
+pre {
+    font-size: 1.0625rem;
+    white-space: pre-line;
+}
+
+li {
+    font-size: 1.0625rem;
+    font-family: var(--plain-text-font);
+    font-weight: 400;
+    color: #2D2D2D;
+    white-space: pre-line;
+    margin: 0.5rem 0;
+    list-style-type: inside;
+    list-style: disc;
+}
+
+a {
+    text-decoration: none;
+}
+
+.short-blue-button {
+    cursor: pointer;
+    display: inline-flex;
+    height: 3rem;
+    border-radius: 0.3125rem;
+    padding: 0 2rem;
+    background-color: var(--component-accent-color2);
+    align-items: center;
+    box-shadow: -2px 2px 10px 0px rgba(213, 213, 213, 0.35), 2px -2px 10px 0px rgba(213, 213, 213, 0.35);
+    color: #FFF;
+    font-weight: 400;
+    font-family: var(--plain-text-font);
+    font-size: 1rem;
+}
+
+.short-blue-button:hover {
+    background-color: #5aadff;
+}
+
+
+.long-blue-button {
+    cursor: pointer;
+    display: flex;
+    padding: auto;
+    width: 100%;
+    height: 3rem;
+    border-radius: 0.3125rem;
+    background-color: var(--component-accent-color2);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: -2px 2px 10px 0px rgba(213, 213, 213, 0.35), 2px -2px 10px 0px rgba(213, 213, 213, 0.35);
+    color: #FFF;
+    font-weight: 400;
+    font-family: var(--plain-text-font);
+    font-size: 1rem;
+}
+
+.success-blue-button {
+    cursor: pointer;
+    display: inline-flex;
+    padding: 0;
+    width: 100%;
+    height: 3rem;
+    border-radius: 0.3125rem;
+    background-color: #FFF;
+    border: 1px solid var(--component-accent-color2);
+    text-align: center;
+    color: var(--component-accent-color2);
+    font-weight: 400;
+    font-family: var(--plain-text-font);
+    font-size: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.long-blue-button:hover {
+    background-color: #5aadff;
+}
+
+.long-blue-button:disabled {
+    background-color: #94CDE0;
+    color: #FFF;
+    box-shadow: none;
+    cursor: default;
+}
+
+a.disabled-a {
+    pointer-events: none;
+    cursor: default;
+}
+
+.breadcrumbs-box {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    margin: 3rem 0;
+}
+
+.breadcrumb-past {
+    display: inline-block;
+    padding-right: 2rem;
+}
+
+.breadcrumb-now {
+    display: inline-block;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.breadcrumbs-box a {
+    font-size: 1.125rem;
+    font-weight: 400;
+    text-decoration: none;
+    font-family: var(--plain-text-font);
+    color: #98abcf;
+}
+/*
+.breadcrumb-now a {
+    text-decoration: underline;
+}
+*/
