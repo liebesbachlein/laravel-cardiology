@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://ahcvp.kz/'),
+    'url' => env('APP_URL', 'https://test.ahcvp.kz/'),
 
     /*
     |--------------------------------------------------------------------------
