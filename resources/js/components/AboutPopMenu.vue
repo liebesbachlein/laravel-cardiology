@@ -1,6 +1,6 @@
 <template>
     <div class="pop-menu">
-        <router-link to="/about/1">
+        <router-link to="/about/us">
   
             <div class="pop-menu-item"  @click="close">    
                 <ChevronLeft class="pop-chev" color="blue"/>
@@ -8,14 +8,14 @@
             </div>
            
         </router-link>
-        <router-link to="/about/2">
+        <router-link to="/about/lead">
         
             <div class="pop-menu-item" @click="close">    
                 <ChevronLeft class="pop-chev" color="blue"/>
                 <h4>Руководство</h4>
             </div>
         </router-link>
-        <router-link to="/about/3">
+        <router-link to="/about/gallery">
         
             <div class="pop-menu-item" @click="close">    
                 <ChevronLeft class="pop-chev" color="blue"/>
@@ -23,7 +23,7 @@
             </div>
         </router-link>
         
-        <router-link to="/about/4">
+        <router-link to="/about/contacts">
 
             <div class="pop-menu-item" @click="close">    
                 <ChevronLeft class="pop-chev" color="blue"/>

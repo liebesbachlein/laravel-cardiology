@@ -1,5 +1,5 @@
 <template>
-  <div class="site-content">
+  <div v-if="isRoute" class="site-content">
     <div class="site-content-in">
       <div class="multi-page">
         <div class="breadcrumbs-box">
@@ -8,7 +8,7 @@
           </div>
           <ChevronRight color="grey"/>
           <div class="breadcrumb-now">
-            <router-link :to="{name: 'AboutView', params: {id: 1}}" @click="pageNum = 1">О нас</router-link>
+            <router-link :to="{name: 'AboutView', params: {id: routeNames[0][1]}}" @click="pageNum = 0">О нас</router-link>
           </div>
           <ChevronRight color="grey"/>
         </div>
@@ -17,38 +17,26 @@
       <div class="multi-page-box">
         <div class="page-side">
           <div class="page-side-box">
-            <router-link :to="{name: 'AboutView', params: {id: 1}}">
-              <SideBarHeadingsNoUrl heading="Об обществе" :isActive="pageNum == 1" @about-nav-click="pageNum = 1"/>
-            </router-link>
-            <router-link :to="{name: 'AboutView', params: {id: 2}}">
-              <SideBarHeadingsNoUrl heading="Руководство" :isActive="pageNum == 2" @about-nav-click="pageNum = 2"/>
-            </router-link>
-            <router-link :to="{name: 'AboutView', params: {id: 3}}">
-              <SideBarHeadingsNoUrl heading="Галерея" :isActive="pageNum == 3" @about-nav-click="pageNum = 3"/>
-            </router-link>
-            <router-link :to="{name: 'AboutView', params: {id: 4}}">
-              <SideBarHeadingsNoUrl heading="Контакты" :isActive="pageNum == 4" @about-nav-click="pageNum = 4"/>
+            <router-link v-for="routeName, i in routeNames" :key="i" :to="{name: 'AboutView', params: {id: routeName[1]}}" >
+              <SideBarHeadingsNoUrl :heading="routeName[0]" :isActive="pageNum == i" @about-nav-click="pageNum = i"/>
             </router-link>
           </div>
         </div>
 
         <div class="multi-page-content">
 
-          
-          <div v-if="pageNum == 2">
+          <div v-if="pageNum == 1">
             <AboutHead/>
           </div>
-          <div v-else-if="pageNum == 3">
+          <div v-else-if="pageNum == 2">
             <AboutGallery/>
           </div>
-          <div v-else-if="pageNum == 4">
+          <div v-else-if="pageNum == 3">
             <AboutContacts/>
           </div>
           <div v-else>
             <AboutSociety/>
           </div>
-
-
         </div>
         
       </div>
@@ -57,6 +45,8 @@
     </div>
     <Footer/>
   </div>
+
+  <NotFound v-else/>
 </template>
 
 <script>
@@ -68,17 +58,35 @@ import AboutGallery from './AboutGallery.vue';
 import AboutHead from './AboutHead.vue';
 import AboutSociety from './AboutSociety.vue';
 import Footer from '@/components/Footer.vue';
+import NotFound from '@/components/NotFound.vue';
 import { ref, computed } from 'vue';
 import { useRoute } from 'vue-router';
 
 export default {
   name: 'AboutView',
-  components: {Footer, SideBarHeadingsNoUrl, ChevronRight, AboutSociety, AboutHead, AboutGallery, AboutContacts},
+  components: {NotFound, Footer, SideBarHeadingsNoUrl, ChevronRight, AboutSociety, AboutHead, AboutGallery, AboutContacts},
   setup() {
+    const routeNames = [['Об обществе', 'us'], ['Руководство', 'lead'], ['Галерея', 'gallery'], ['Контакты', 'contacts']];
+    const routeMap = new Map([
+      ['us', 0],
+      ['lead', 1],
+      ['gallery', 2],
+      ['contacts', 3]
+  ])
     const route = useRoute()
-    const pageNum = computed(() => route.params.id)
+    const isRoute = ref(true)
 
-    return { pageNum }
+    const pageNum = computed(() => { 
+      const res = routeMap.get(route.params.id)
+      if (res == undefined) {
+        isRoute.value = false
+        return 0
+      } else {
+        return res;
+      }
+    })
+
+    return { pageNum, isRoute, routeNames }
   }
 }
 </script>

@@ -14,7 +14,10 @@
 
                 <div class="multi-page-box">
                     <div class="newsfeed-timeline multi-page-content">
-                        <div v-if="error">{{ error }}</div>
+                        <div v-if="error">
+                            <h3>Произошла ошибка</h3>
+                            <h3>{{ error }}</h3>
+                        </div>
                         <div v-else-if="newsFeed.length > 1" style="width: 100%">
                             <div v-for="newsItem in newsFeed" :key="newsItem? newsItem.id : null" style="width: 100%">
                                 <div v-if="newsItem? newsItem.id : null" style="width: 100%">
@@ -31,10 +34,10 @@
                     
                     <div class="page-side">
                         <div class="page-side-box">
-                            <router-link to="/specialists/3">
+                            <router-link to="/specialists/education">
                                 <SideBarHeadingsNoUrl check="true" heading="Записаться на обучение"/>
                             </router-link>
-                            <router-link to="/specialists/1">
+                            <router-link to="/specialists/membership">
                                 <SideBarHeadingsNoUrl check="true" heading="Стать членом Общества"/>
                             </router-link>
                         </div> 
@@ -69,27 +72,13 @@ export default {
     const displayNewsList = ref([null])
     
     const load = async () => {
-      try {
+      
         axios.get('/api/news-items').then((response) => {
             newsFeed.value = response.data
-        })  //await getNewsItemAll()
-        /*newsFeed.value.sort((a, b) => {
-            let fa = a.date_published,
-                fb = b.date_published;
-
-                if (fa > fb) {
-                    return -1;
-                }
-                if (fa < fb) {
-                    return 1;
-                }
-                return 0;
-            });*/
-      }
-      catch(err) {
+        }).catch((err) => {
         error.value = err.message
         console.log(error.value)
-      }
+        })
     }
 
     const displayNews = () => {

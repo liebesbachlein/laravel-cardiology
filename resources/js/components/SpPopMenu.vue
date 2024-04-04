@@ -1,6 +1,6 @@
 <template>
     <div class="pop-menu">
-        <router-link to="/specialists/1">
+        <router-link to="/specialists/membership">
             
             <div class="pop-menu-item" style="margin-top: 0.5rem;" @click="close">    
                 <ChevronLeft  class="pop-chev"  color="blue"/>
@@ -8,14 +8,14 @@
             </div>
             
         </router-link>
-        <router-link to="/specialists/2">
+        <router-link to="/specialists/resources">
             
             <div class="pop-menu-item" @click="close">    
                 <ChevronLeft  class="pop-chev"  color="blue"/>
                 <h4>Ресурсы</h4>
             </div>
         </router-link>
-        <router-link to="/specialists/3">
+        <router-link to="/specialists/education">
         
             <div class="pop-menu-item" @click="close">    
                 <ChevronLeft  class="pop-chev"  color="blue"/>

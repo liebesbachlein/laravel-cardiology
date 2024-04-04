@@ -34,28 +34,28 @@
         </div>
         <div class="side-pop-menu-details" v-if="popAbout">
 
-          <router-link to="/about/1" @click="closeSideMenu">
+          <router-link to="/about/us" @click="closeSideMenu">
             <div class="sub-pop-item">    
                 Об Обществе
                 <ChevronRight color="blue"/>
             </div>
           </router-link>
 
-          <router-link to="/about/2" @click="closeSideMenu">
+          <router-link to="/about/lead" @click="closeSideMenu">
             <div class="sub-pop-item">    
                 Руководство
                 <ChevronRight color="blue"/>
             </div>
           </router-link>
           
-          <router-link to="/about/3" @click="closeSideMenu">
+          <router-link to="/about/gallery" @click="closeSideMenu">
             <div class="sub-pop-item">    
                 Галерея
                 <ChevronRight color="blue"/>
             </div>
           </router-link>
 
-          <router-link to="/about/4" @click="closeSideMenu">
+          <router-link to="/about/contacts" @click="closeSideMenu">
             <div class="sub-pop-item">    
                 Контакты
                 <ChevronRight color="blue"/>
@@ -80,21 +80,21 @@
         </div>
 
         <div class="side-pop-menu-details" v-if="popSp">
-          <router-link to="/specialists/1" @click="closeSideMenu">
+          <router-link to="/specialists/membership" @click="closeSideMenu">
             <div class="sub-pop-item">    
                 Членство
                 <ChevronRight color="blue"/>
             </div>
           </router-link>
 
-          <router-link to="/specialists/2" @click="closeSideMenu">
+          <router-link to="/specialists/resources" @click="closeSideMenu">
             <div class="sub-pop-item">    
                 Ресурсы
                 <ChevronRight color="blue"/>
             </div>
           </router-link>
           
-          <router-link to="/specialists/3" @click="closeSideMenu">
+          <router-link to="/specialists/education" @click="closeSideMenu">
             <div class="sub-pop-item">    
                 Заявка на обучение
                 <ChevronRight color="blue"/>
@@ -110,21 +110,21 @@
         </div>
 
         <div class="side-pop-menu-details" v-if="popPt">
-          <router-link to="/patients/1" @click="closeSideMenu">
+          <router-link to="/patients/useful-info" @click="closeSideMenu">
             <div class="sub-pop-item">    
                 Полезная информация
                 <ChevronRight color="blue"/>
             </div>
           </router-link>
 
-          <router-link to="/patients/2" @click="closeSideMenu">
+          <router-link to="/patients/frequent-questions" @click="closeSideMenu">
             <div class="sub-pop-item">    
                 Частные вопросы
                 <ChevronRight color="blue"/>
             </div>
           </router-link>
           
-          <router-link to="/patients/3" @click="closeSideMenu">
+          <router-link to="/patients/ask-specialist" @click="closeSideMenu">
             <div class="sub-pop-item">    
                 Обратиться к специалисту
                 <ChevronRight color="blue"/>
@@ -139,11 +139,11 @@
     <div class="pop-lower">
 
     <div class="add-links-box">
-      <router-link to="/specialists/1" class="add-links" @click="closeSideMenu">
+      <router-link to="/specialists/membership" class="add-links" @click="closeSideMenu">
         Стать членом Общества
         <ChevronRight color="blue"/>
       </router-link>
-      <router-link to="/specialists/3" class="add-links" @click="closeSideMenu">
+      <router-link to="/specialists/education" class="add-links" @click="closeSideMenu">
         Записаться на обучение
         <ChevronRight color="blue"/>
       </router-link>

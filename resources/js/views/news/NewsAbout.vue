@@ -15,7 +15,10 @@
 
                 <div class="multi-page-box">                   
                     <div class="multi-page-content">
-                        <div v-if="error">{{ error }}</div>
+                        <div v-if="error">
+                            <h3>Ошибка 404</h3>
+                            <h3>Такой новости нет ...</h3>
+                        </div>
                         <div v-else-if="newsItem.title != null" class="newsabout-content">
                                 
                             <div class="newsabout-phrase-date">
@@ -40,10 +43,10 @@
                     </div>
                     <div class="page-side">
                         <div class="page-side-box">
-                            <router-link to="/specialists/3">
+                            <router-link to="/specialists/education">
                                 <SideBarHeadingsNoUrl  check="true" heading="Записаться на обучение"/>
                             </router-link>
-                            <router-link to="/specialists/1">
+                            <router-link to="/specialists/membership">
                                 <SideBarHeadingsNoUrl  check="true" heading="Стать членом Общества"/>
                             </router-link>
                         </div> 
@@ -98,16 +101,14 @@ export default {
     const route = useRoute()
 
     const load = async () => {
-      try {
         const id = route.params.id
         axios.get('/api/news-items/' + id).then((response) => {
             newsItem.value = response.data
+        }).catch((err) => {
+            error.value = err.message
+            console.log(error.value)
         })
-      }
-      catch(err) {
-        error.value = err.message
-        console.log(error.value)
-      }
+
     }
     
     load()

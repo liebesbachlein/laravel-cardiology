@@ -13,7 +13,7 @@
       <div class="navbar-item"   @mouseleave="popAbout = false">
         <Transition name="pop-menu"><AboutPopMenu v-if="popAbout" @closeAbout="popAbout = false"/></Transition>
         <div class="menu-item-round">
-          <router-link  @mouseover="popAbout = true" :to="{name: 'AboutView', params: {id: 1}}" @click="popAbout = false" :class="{'a-hover': popAbout}">О нас</router-link>
+          <router-link  @mouseover="popAbout = true" :to="{name: 'AboutView', params: {id: 'us'}}" @click="popAbout = false" :class="{'a-hover': popAbout}">О нас</router-link>
         </div>
       </div>
       <p class="divider">|</p>
@@ -28,7 +28,7 @@
       <div class="navbar-item"   @mouseleave="popSp = false">
         <Transition name="pop-menu"><SpPopMenu v-if="popSp" @closeSp="popSp = false"/></Transition>
         <div class="menu-item-round">
-          <router-link   @click="popSp = false" @mouseover="popSp = true"  :to="{name: 'SpecialistsView', params: {id: 1}} " :class="{'a-hover': popSp}">Специалистам</router-link>
+          <router-link   @click="popSp = false" @mouseover="popSp = true"  :to="{name: 'SpecialistsView', params: {id: 'membership'}} " :class="{'a-hover': popSp}">Специалистам</router-link>
         </div>
       </div>
       <p class="divider">|</p>
@@ -36,7 +36,7 @@
       <div class="navbar-item"  @mouseleave="popPt = false">
         <Transition name="pop-menu"><PtPopMenu v-if="popPt" @closePt="popPt = false"/></Transition>
         <div class="menu-item-round">
-          <router-link  @click="popPt = false" @mouseover="popPt = true"   :to="{name: 'PatientsView', params: {id: 1}}" :class="{'a-hover': popPt}">Пациентам</router-link>
+          <router-link  @click="popPt = false" @mouseover="popPt = true"   :to="{name: 'PatientsView', params: {id: 'useful-info'}}" :class="{'a-hover': popPt}">Пациентам</router-link>
         </div>
       </div>
     </div>

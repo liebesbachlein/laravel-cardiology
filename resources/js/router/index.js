@@ -8,6 +8,7 @@ import SpecialistsView from '../views/specialists/SpecialistsView.vue'
 import MembershipRequest from '../views/specialists/MembershipRequest.vue'
 import EducationRequest from '../views/specialists/EducationRequest.vue'
 import PatientsView from '../views/patients/PatientsView.vue'
+import axios from 'axios';
 
 const routes = [
   {
@@ -18,14 +19,6 @@ const routes = [
       hideNavbar: false,
      }
     
-  },
-  {
-    path: '/about/:id/',
-    name: 'AboutView',
-    component: AboutView, 
-    meta: {
-      hideNavbar: false,
-     }
   },
   {
     path: '/news/',
@@ -45,11 +38,19 @@ const routes = [
   }, 
   {
     path: '/about/',
-    redirect: '/about/1', 
+    redirect: '/about/us', 
     meta: {
       hideNavbar: false,
      }
   }, 
+  {
+    path: '/about/:id/',
+    name: 'AboutView',
+    component: AboutView, 
+    meta: {
+      hideNavbar: false,
+     }
+  },
   {
     path: '/specialists/:id/',
     name: 'SpecialistsView',
@@ -60,7 +61,7 @@ const routes = [
   },
   {
     path: '/specialists/',
-    redirect: '/specialists/1/', 
+    redirect: '/specialists/membership/', 
     meta: {
       hideNavbar: false,
      }
@@ -82,6 +83,13 @@ const routes = [
      }
   }, 
   {
+    path: '/patients/',
+    redirect: '/patients/useful-info', 
+    meta: {
+      hideNavbar: false,
+     }
+  }, 
+  {
     path: '/patients/:id/',
     name: 'PatientsView',
     component: PatientsView, 
@@ -90,20 +98,19 @@ const routes = [
      }
   },
   {
-    path: '/patients/',
-    redirect: '/patients/1', 
-    meta: {
-      hideNavbar: false,
-     }
-  }, 
-  {
-    path: '/:pathMatch(.*)*',
+    path: '/:catchAll(.*)',
+    name: "NotFound",
     component: NotFound,
   }
+ /* {
+    path: '/:pathMatch(.*)*',
+    name: "NotFound",
+    component: NotFound,
+  }*/
 ]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: createWebHistory('/'),
   routes, 
   scrollBehavior(to, from, savedPosition) {
     // always scroll to top
