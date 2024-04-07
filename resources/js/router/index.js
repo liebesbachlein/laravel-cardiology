@@ -9,6 +9,7 @@ import MembershipRequest from '../views/specialists/MembershipRequest.vue'
 import EducationRequest from '../views/specialists/EducationRequest.vue'
 import PatientsView from '../views/patients/PatientsView.vue'
 import axios from 'axios';
+import LoginView from '../views/auth/LoginView.vue'
 
 const routes = [
   {
@@ -97,6 +98,15 @@ const routes = [
       hideNavbar: false,
      }
   },
+  {
+    path: '/admin/',
+    name: 'LoginView',
+    component: LoginView,
+    meta: {
+      hideNavbar: true,
+     },
+     component: LoginView
+  }, 
   {
     path: '/:catchAll(.*)',
     name: "NotFound",

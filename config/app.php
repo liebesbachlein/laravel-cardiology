@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'development'),
 
     /*
     |--------------------------------------------------------------------------
@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://test.ahcvp.kz/'),
+    'url' => env('APP_URL', 'https://api.ahcvp.kz/'),
 
     /*
     |--------------------------------------------------------------------------

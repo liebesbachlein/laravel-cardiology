@@ -26,9 +26,7 @@
 
 <script>
 import Loader from '@/components/Loader.vue'
-//import { postAskItem} from '@/firebase/config.js'
-import Axios from 'axios'
-//import emailjs from 'emailjs-com' 
+import axios from 'axios'
 
 export default {
     data() {
@@ -84,35 +82,30 @@ export default {
 
         if(this.name && this.email && this.content) {
           this.loader = ' '
-          try {
-            /*postAskItem(this.name, this.email, this.content).then((res1) => emailjs
-            .sendForm('service_kejad4f', 'template_1bb61ip', this.$refs.formAsk, '5rwZj5R_LOCI4FI6C')
-              .then((result) => {
-                this.successSubmit= true
-                this.loader = null
-              }))
-            
-
-            /*const config = {
-                    responseType: 'text',
-                };
-
-            let responsePHP = await Axios.post('/post.php', {text : 'Hello, Aigerim'}, config)
-
-            if (responsePHP) {
-              console.log('success')
-              console.log(responsePHP)
-              console.log(responsePHP.data)
-              console.log(responsePHP.data.message)
-            }*/
-
-          } catch (err) {
-            this.loader = null
-            this.errorSubmit = err.message
+          const data = {
+            name: this.name,
+            email: this.email,
+            content: this.content
           }
-        } else {
-          console.log('Incomplete form!')
-        }
+          axios.post('/api/post/ask_items', data).then((response) => {
+          if(response.status != 200) {
+            throw Error('Произошла ошибка 100')
+          } 
+            axios.post('/api/mail_ask/send_mail', data).then((mailRes) => {
+              if(mailRes.status != 200) {
+                throw Error('Произошла ошибка 101')
+              }
+            }).catch((err) => {          
+            this.errorSubmit = err.message
+            })
+            this.successSubmit = true 
+          }).catch((err) => {          
+            this.errorSubmit = err.message
+          })
+
+          this.loader = null
+        } 
+        
 
         if(!this.content) {
           this.content = ''

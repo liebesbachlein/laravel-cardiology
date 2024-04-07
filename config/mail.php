@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'log'),
+    'default' => env('MAIL_MAILER', 'smtp'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,8 +39,8 @@ return [
         'smtp' => [
             'transport' => 'smtp',
             'url' => env('MAIL_URL'),
-            'host' => env('MAIL_HOST', '127.0.0.1'),
-            'port' => env('MAIL_PORT', 2525),
+            'host' => env('MAIL_HOST', 'smtp.mailgun.org'),
+            'port' => env('MAIL_PORT', 465),
             'encryption' => env('MAIL_ENCRYPTION', 'tls'),
             'username' => env('MAIL_USERNAME'),
             'password' => env('MAIL_PASSWORD'),
@@ -62,9 +62,9 @@ return [
 
         'sendmail' => [
             'transport' => 'sendmail',
-            'path' => env('MAIL_SENDMAIL_PATH', '/usr/sbin/sendmail -bs -i'),
+            'path' => env('MAIL_SENDMAIL_PATH', '/usr/sbin/sendmail -t -i'),
         ],
-
+        
         'log' => [
             'transport' => 'log',
             'channel' => env('MAIL_LOG_CHANNEL'),

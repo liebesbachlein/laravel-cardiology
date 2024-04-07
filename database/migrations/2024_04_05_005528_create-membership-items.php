@@ -25,9 +25,9 @@ return new class extends Migration
             $table->date('date_doc');
             $table->string('place_doc', length: 255);
             $table->text('education');
-            $table->text('add_education');
-            $table->text('experience');
-            $table->text('interests');
+            $table->text('add_education')->nullable();
+            $table->text('experience')->nullable();
+            $table->text('interests')->nullable();
             $table->date('date_member');
             $table->string('terms', length: 255);
             $table->timestamps();

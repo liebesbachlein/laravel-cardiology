@@ -15,7 +15,7 @@
                     </div>
               </div>
         
-      <form ref="formMem"  @submit.prevent="handleSubmit" :class="{'success-form' : successSubmit}" autocomplete="on" >
+      <form method="POST" @submit.prevent="handleSubmit" :class="{'success-form' : successSubmit}" autocomplete="on" >
         
         <div class="subpage-title" style="text-align: center;">Заяка на членство</div>
           <label>Фамилия <span>*</span></label>
@@ -26,7 +26,7 @@
     
 
           <label>Отчество</label>
-          <input :readonly="successSubmit" type="text" v-model="patro_name" id="patro_name" name="patro_name" required>
+          <input :readonly="successSubmit" type="text" v-model="patro_name" id="patro_name" name="patro_name">
   
   
           <label>Email <span>*</span></label>
@@ -97,9 +97,8 @@
 <script>
 import ChevronRight from '@/components/ChevronRight.vue';
 import Footer from '@/components/Footer.vue';
-import Axios from 'axios'
+import axios from 'axios'
 import Loader from '@/components/Loader.vue';
-//import { postMembershipItem} from '@/firebase/config.js'
 
 export default {
     name: 'MembershipRequest',
@@ -458,37 +457,45 @@ export default {
         if(this.first_name && this.last_name && this.email && this.phone_number && this.address && this.date_birth && this.place_birth && 
         this.id_doc && this.date_doc && this.place_doc && this.terms && this.education) {
           this.loader = ' '
-          try {
-            /*postMembershipItem(
-              this.last_name,
-              this.first_name,
-              this.patro_name,
-              this.email,
-              this.phone_number,
-              this.date_birth,
-              this.place_birth,
-              this.address,
-              this.id_doc,
-              this.date_doc,
-              this.place_doc,
-              this.education,
-              this.add_education,
-              this.interests,
-              this.experience,
-              this.date_member,
-              this.terms).then((res1) => 
-              emailjs.sendForm('service_kejad4f', 'template_gq4284m', 
-              this.$refs.formMem, '5rwZj5R_LOCI4FI6C')
-              .then((res2) => {
-                this.successSubmit = true
-                this.loader = null
-              }));
-             */
-          } catch (err) {
-            this.loader = null
-            this.errorSubmit = err.message
+          
+        const data = {
+          last_name: this.last_name,
+          first_name: this.first_name,
+          patro_name: this.patro_name,
+          email: this.email,
+          phone_number: this.phone_number,
+          date_birth: this.date_birth,
+          place_birth: this.place_birth,
+          address: this.address,
+          id_doc: this.id_doc,
+          date_doc: this.date_doc,
+          place_doc: this.place_doc,
+          education: this.education,
+          add_education: this.add_education,
+          interests: this.interests,
+          experience: this.experience,
+          date_member: this.date_member,
+          terms: this.terms
+        }
+
+        axios.post('/api/post/membership_items', data).then((response) => {
+          if(response.status != 200) {
+            throw Error('Произошла ошибка 100')
           }
-        } 
+          axios.post('/api/mail_membership/send_mail', data).then((mailRes) => {
+            if(mailRes.status != 200) {
+              throw Error('Произошла ошибка 101')
+            }
+          }).catch((err) => {          
+          this.errorSubmit = err.message
+          })
+          this.successSubmit = true  
+        }).catch((err) => {          
+          this.errorSubmit = err.message
+        })
+          this.loader = null
+        }
+    
 
         if(!this.terms) {
           this.terms = ''
@@ -540,7 +547,7 @@ export default {
         
     }, 
     download: function () {
-            Axios.get('/policy.pdf', { responseType: 'blob' })
+            axios.get('/policy.pdf', { responseType: 'blob' })
                 .then(response => {
                 const blob = new Blob([response.data], { type: 'application/pdf' });
                 const link = document.createElement('a');

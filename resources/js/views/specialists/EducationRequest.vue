@@ -26,7 +26,7 @@
     
 
           <label>Отчество</label>
-          <input :readonly="successSubmit" type="text" v-model="patro_name" id="patro_name" name="patro_name" required>
+          <input :readonly="successSubmit" type="text" v-model="patro_name" id="patro_name" name="patro_name">
   
   
           <label>Email <span>*</span></label>
@@ -109,9 +109,8 @@
 <script>
 import ChevronRight from '@/components/ChevronRight.vue';
 import Footer from '@/components/Footer.vue';
-import Axios from 'axios'
+import axios from 'axios'
 import Loader from '@/components/Loader.vue';
-//import { postEducationItem} from '@/firebase/config.js'
 
 export default {
     name: 'MembershipRequest',
@@ -437,28 +436,33 @@ export default {
        } 
        if(this.first_name && this.last_name && this.email && this.phone_number && this.speciality && this.address_home && this.address_work && 
        this.terms && this.picked_month && this.picked_time) {
-        
-        this.loader = ' '
-          try {
-            /*const response = postEducationItem(
-              this.last_name,
-              this.first_name,
-              this.patro_name,
-              this.email,
-              this.phone_number,
-              this.speciality,
-              this.address_home,
-              this.address_work,
-              this.picked_month,
-              this.picked_time,
-              this.terms)
-              */
-          } catch (err) {
-            this.loader = null
+          
+          const data = {
+            last_name: this.last_name,
+            first_name: this.first_name,
+            patro_name: this.patro_name,
+            email: this.email,
+            phone_number: this.phone_number,
+            speciality: this.speciality,
+            address_home: this.address_home,
+            address_work: this.address_work,
+            picked_month: this.picked_month,
+            picked_time: this.picked_time,
+            terms: this.terms
+          }
+          console.log(data)
+          axios.post('/api/post/education_items', data).then((response) => {
+            console.log(response)
+            if (response.status != 200) {
+              throw Error('Not available')
+            } 
+            this.successSubmit = true
+          }).catch((err) => {          
             this.errorSubmit = err.message
-          }          
-       } 
-
+          })
+            this.loader = null
+        }        
+       
        if(!this.terms) {
          this.terms = ''
          console.log(this.errorTerms)
@@ -497,7 +501,7 @@ export default {
        }
    }, 
     download: function () {
-            Axios.get('/policy.pdf', { responseType: 'blob' })
+            axios.get('/policy.pdf', { responseType: 'blob' })
                 .then(response => {
                 const blob = new Blob([response.data], { type: 'application/pdf' });
                 const link = document.createElement('a');
