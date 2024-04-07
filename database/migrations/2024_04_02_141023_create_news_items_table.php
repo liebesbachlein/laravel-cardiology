@@ -6,14 +6,16 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /*
+    
     public function up(): void
     {
-        Schema::create('listings', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->longText('description');
+        Schema::create('news_items', function (Blueprint $table) {
+            $table->string('id', length: 255);
+            $table->string('phrase', length: 255);
+            $table->date('date_published');
+            $table->string('title', length: 255);
+            $table->string('summary', length: 1000);
+            $table->text('content');
             $table->string('file')->nullable();
             $table->timestamps();
         });
@@ -23,5 +25,5 @@ return new class extends Migration
     {
         //
     }
-    */
+    
 };
