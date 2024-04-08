@@ -76,6 +76,7 @@ a {
 .short-blue-button {
     cursor: pointer;
     display: inline-flex;
+    
     height: 3rem;
     border-radius: 0.3125rem;
     padding: 0 2rem;

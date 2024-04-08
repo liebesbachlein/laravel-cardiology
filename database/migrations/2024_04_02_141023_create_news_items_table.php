@@ -10,7 +10,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('news_items', function (Blueprint $table) {
-            $table->string('id', length: 255);
+            $table->string('id', length: 255)->primary();
             $table->string('phrase', length: 255);
             $table->date('date_published');
             $table->string('title', length: 255);

@@ -39,7 +39,7 @@
                             <div class="newsabout-content" v-html="newsItem.content">
                             </div>
                         </div>
-                        <Loader v-else/>
+                        <LoaderCircle v-else/>
                     </div>
                     <div class="page-side">
                         <div class="page-side-box">
@@ -66,11 +66,11 @@ import { ref} from 'vue';
 import axios from 'axios';
 import { useRoute } from 'vue-router';
 //import { getNewsItemById  } from '@/firebase/config';
-import Loader from '@/components/Loader.vue';
+import LoaderCircle from '@/components/LoaderCircle.vue';
 
 export default {
     name: "NewsAbout",
-    components: {ChevronRight,  SideBarHeadingsNoUrl, Footer, Loader},
+    components: {ChevronRight,  SideBarHeadingsNoUrl, Footer, LoaderCircle},
     mounted() {
         if(this.newsItem.value != null) {
             const link = document.getElementById(news.id)

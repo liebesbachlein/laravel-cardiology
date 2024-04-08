@@ -30,6 +30,7 @@ return new class extends Migration
             $table->text('interests')->nullable();
             $table->date('date_member');
             $table->string('terms', length: 255);
+            $table->boolean('accepted');
             $table->timestamps();
         });
     }

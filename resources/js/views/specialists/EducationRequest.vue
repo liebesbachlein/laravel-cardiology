@@ -88,7 +88,7 @@
           
     
           <div class="submit" style="display: flex; justify-content: center;">
-          <Loader style="position: absolute;" v-if="loader"/>
+          <LoaderCircle style="position: absolute;" v-if="loader"/>
           <input type="submit" :disabled="!enableSubmit" class="long-blue-button" value="Отправить заявку" v-if="!successSubmit && !errorSubmit ">
         </div>
         <div class="success-blue-button" style="background-color: #FFF; border: 1px solid var(--component-accent-color2); color: var(--component-accent-color2)" 
@@ -110,11 +110,11 @@
 import ChevronRight from '@/components/ChevronRight.vue';
 import Footer from '@/components/Footer.vue';
 import axios from 'axios'
-import Loader from '@/components/Loader.vue';
+import LoaderCircle from '@/components/LoaderCircle.vue';
 
 export default {
     name: 'MembershipRequest',
-    components: {ChevronRight, Footer, Loader}, 
+    components: {ChevronRight, Footer, LoaderCircle}, 
     data() {
       return {
         first_name: null,

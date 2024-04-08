@@ -8,8 +8,14 @@ import SpecialistsView from '../views/specialists/SpecialistsView.vue'
 import MembershipRequest from '../views/specialists/MembershipRequest.vue'
 import EducationRequest from '../views/specialists/EducationRequest.vue'
 import PatientsView from '../views/patients/PatientsView.vue'
-import axios from 'axios';
 import LoginView from '../views/auth/LoginView.vue'
+import AdminView from '../views/admin/AdminView.vue'
+import AdminNewsList from '../views/admin/AdminNewsList.vue'
+import AdminNewsAbout from '../views/admin/AdminNewsAbout.vue'
+import AdminNewsAdd from '../views/admin/AdminNewsAdd.vue'
+import AdminMembershipList from '../views/admin/AdminMembershipList.vue'
+import AdminMembershipAbout from '../views/admin/AdminMembershipAbout.vue'
+
 
 const routes = [
   {
@@ -105,13 +111,62 @@ const routes = [
     meta: {
       hideNavbar: true,
      },
-     component: LoginView
   }, 
+  {
+    path: '/admin/dashboard',
+    name: 'AdminView',
+    component: AdminView,
+    meta: {
+      hideNavbar: true,
+     }
+  }, 
+  {
+    path: '/admin/dashboard/news-list',
+    name: 'AdminNewsList',
+    component: AdminNewsList,
+    meta: {
+      hideNavbar: true,
+     }
+  }, 
+  {
+    path: '/admin/dashboard/news-list/:id/', 
+    name: 'AdminNewsAbout',
+    component: AdminNewsAbout,
+    meta: {
+      hideNavbar: true,
+     }
+  }, 
+  {
+    path: '/admin/dashboard/news-list/add-news',
+    name: 'AdminNewsAdd',
+    component: AdminNewsAdd,
+    meta: {
+      hideNavbar: true,
+     }
+  }, 
+  {
+    path: '/admin/dashboard/membership-list',
+    name: 'AdminMembershipList',
+    component: AdminMembershipList,
+    meta: {
+      hideNavbar: true,
+     }
+  }, 
+  {
+    path: '/admin/dashboard/membership-list/:id/', 
+    name: 'AdminMembershipAbout',
+    component: AdminMembershipAbout,
+    meta: {
+      hideNavbar: true,
+     }
+  },
   {
     path: '/:catchAll(.*)',
     name: "NotFound",
     component: NotFound,
-  }
+  },
+  
+
  /* {
     path: '/:pathMatch(.*)*',
     name: "NotFound",

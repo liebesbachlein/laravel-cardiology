@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name', length: 255);
             $table->string('email', length: 255);
             $table->text('content');
+            $table->boolean('accepted');
             $table->timestamps();
         });
     }

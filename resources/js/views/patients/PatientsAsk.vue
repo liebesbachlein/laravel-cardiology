@@ -16,7 +16,7 @@
           <textarea :readonly="successSubmit" rows = "10" :class="{'invalid' : errorContent}"  v-model="content" name="content" required/>
   
           <div class="submit" style="display: flex; justify-content: center;">
-            <Loader style="position: absolute;" v-if="loader"/>
+            <LoaderCircle style="position: absolute;" v-if="loader"/>
             <input type="submit" :disabled="!enableSubmit" class="long-blue-button" value="Отправить заявку" v-if="!successSubmit && !errorSubmit ">
           </div>
           <div class="success-blue-button" style="background-color: #FFF; border: 1px solid var(--component-accent-color2); color: var(--component-accent-color2)" v-if="successSubmit || errorSubmit " v-text="errorSubmit? errorSubmit : 'Заявка успешно отправлена!'"/>
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import Loader from '@/components/Loader.vue'
+import LoaderCircle from '@/components/LoaderCircle.vue'
 import axios from 'axios'
 
 export default {
@@ -39,7 +39,7 @@ export default {
         errorSubmit: null
     }
   },
-  components: {Loader},
+  components: {LoaderCircle},
   computed: {
     enableSubmit: function() {
       return this.name && this.email && this.content
@@ -85,9 +85,10 @@ export default {
           const data = {
             name: this.name,
             email: this.email,
-            content: this.content
+            content: this.content,
+            accepted: false
           }
-          axios.post('/api/post/ask_items', data).then((response) => {
+          axios.post('/api/post/ask-items', data).then((response) => {
           if(response.status != 200) {
             throw Error('Произошла ошибка 100')
           } 

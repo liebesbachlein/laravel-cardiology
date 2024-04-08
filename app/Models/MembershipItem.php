@@ -23,5 +23,6 @@ class MembershipItem extends Model
             'experience',
             'interests',
             'date_member',
-            'terms'];
+            'terms',
+        'accepted'];
 }

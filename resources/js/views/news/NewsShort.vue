@@ -55,6 +55,8 @@ export default {
 .newsshort-phrase-date {
     display: flex;
     justify-content: space-between;
+    flex-direction: row;
+    width: 100%;
     
 }
 .newsshort-phrase-date>div {

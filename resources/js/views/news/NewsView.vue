@@ -18,14 +18,14 @@
                             <h3>Произошла ошибка</h3>
                             <h3>{{ error }}</h3>
                         </div>
-                        <div v-else-if="newsFeed.length > 1" style="width: 100%">
+                        <div v-else-if="newsFeed.length > 0" style="width: 100%">
                             <div v-for="newsItem in newsFeed" :key="newsItem? newsItem.id : null" style="width: 100%">
                                 <div v-if="newsItem? newsItem.id : null" style="width: 100%">
                                     <NewsShort :newsItem="newsItem? newsItem : null"/>
                                 </div>
                             </div>
                         </div>
-                        <div v-else><Loader/></div>
+                        <div v-else><LoaderCircle/></div>
 
                         <div class="long-blue-button" v-if="isLoadMore" @click="loadMore">
                             Загрузить еще
@@ -53,7 +53,7 @@
 import ChevronRight from '@/components/ChevronRight.vue';
 import NewsShort from './NewsShort.vue';
 import Footer from '@/components/Footer.vue';
-import Loader from '@/components/Loader.vue';
+import LoaderCircle from '@/components/LoaderCircle.vue';
 import NewsAbout from './NewsAbout.vue';
 import axios from 'axios';
 import { ref, computed, onMounted } from 'vue';
@@ -62,7 +62,7 @@ import SideBarHeadingsNoUrl from '@/components/SideBarHeadingsNoUrl.vue';
 
 export default {
     name: "NewsView",
-    components: { NewsAbout, ChevronRight, NewsShort, Footer, Loader, SideBarHeadingsNoUrl },
+    components: { NewsAbout, ChevronRight, NewsShort, Footer, LoaderCircle, SideBarHeadingsNoUrl },
     setup() { 
     const newsLimit = 10
     let loadIndex = 1
