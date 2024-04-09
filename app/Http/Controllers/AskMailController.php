@@ -23,7 +23,7 @@ class AskMailController extends Controller
             'content'=>$request->content
         );
         //mail("gerardinearmstrong@gmail.com","My subject", $data);
-        Mail::to('gerardinearmstrong@gmail.com')->queue(new AskMail($data));
+        Mail::to('gerardinearmstrong@gmail.com')->send(new AskMail($data));
         //Mail::to($request->user())->send(new SendMembership($item));
 
     }

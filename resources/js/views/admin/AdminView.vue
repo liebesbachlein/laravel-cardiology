@@ -27,6 +27,9 @@
                                     Рассмотреть заявку, отклонить или одобрить заявку, убрать заявку 
                                 </div>
                         </router-link>
+                        <div class="short-blue-button admin-add-button" tag="div" style="margin: 0 0 0 auto" @click="logOut">
+                            Выйти
+                        </div>
                     </div>
                 </div>
             </div>
@@ -35,9 +38,23 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
     name: "AdminView",
     components: {  },
+    methods: {
+        logOut() {
+            axios.post('/users/logout').then((response) => {
+            if(response.status != 200) {
+              throw Error('Произошла ошибка')
+            }
+            this.$router.push({ path: '/' }) 
+          }).catch((err) => {          
+            console.log(err.message)
+          })
+        }
+    }
  
 }
 

@@ -37,10 +37,10 @@ class MembershipMailController extends Controller
         );
         
         Mail::to('gerardinearmstrong@gmail.com')->queue(new MembershipMail($data));
-        Mail::to('aigerim.tuishieva@nu.edu.kz')->later(now()->addMinutes(10), new MembershipMail($data));
+        //Mail::to('aigerim.tuishieva@nu.edu.kz')->later(now()->addMinutes(10), new MembershipMail($data));
 
         //
-        //Mail::to($request->user())->send(new ConfirmationMail($data));
+        //Mail::to($request->user())->queue(new ConfirmationMail($data));
 
     }
 }

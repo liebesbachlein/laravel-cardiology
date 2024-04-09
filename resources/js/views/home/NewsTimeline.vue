@@ -14,10 +14,13 @@
         <div class="month-news">
             <NewsMiniRight :news="news[0]"/>
         </div>
+        <div class="month-news">
+            <NewsMiniRight :news="news[1]"/>
+        </div>
 
         <MonthBlock id="m2" monthName="Май 2024" :lightUp="ms[1]" style="position: relative; "/>
         <div class="month-news">
-            <NewsMiniRight :news="news[1]"/>
+            <NewsMiniRight :news="news[2]"/>
         </div>
         <MonthBlock id="m3" monthName="Июнь 2024" :lightUp="ms[2]" style="position: relative; "/>
         <!--<div class="month-news">
@@ -95,6 +98,13 @@ export default {
             circleOffset: 0,
             hideCircle: true,
         news: [
+        {date1: '24', 
+            date2: '25',
+            month: 'апреля',
+            title: 'Региональный тур «Академия Kардио-терапевта»', 
+            address: 'Гостиничный комплекс "Cosmonaut", ул. Аманжолова 162а, Караганда', 
+            details: 'Не упустите шанс присоединиться к этому значимому мероприятию, где вы сможете не только обогатить свои знания, но и приобрести практические навыки, необходимые для успешной работы в области сердечно-сосудистой медицины. ',
+            url: "/news/konferenziya-v-karagange/"},
             {date1: '29', 
             date2: '30',
             month: 'апреля',

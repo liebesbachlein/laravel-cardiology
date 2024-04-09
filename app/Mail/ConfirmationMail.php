@@ -8,17 +8,17 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
 
 class ConfirmationMail extends Mailable
 {
-    use Queueable, SerializesModels;
-
-    /**
+/**
      * Create a new message instance.
      */
-    public function __construct()
+    public $data;
+    public function __construct($data)
     {
-        //
+        $this->data = $data;
     }
 
     /**
@@ -27,7 +27,8 @@ class ConfirmationMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Confirmation Mail',
+            from: new Address('info@ahcvp.kz', 'info@ahcvp.kz'),
+            subject: 'Ваша заяка на рассмотрении',
         );
     }
 
@@ -37,7 +38,8 @@ class ConfirmationMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'mailMembership',
+            with: ['data' => $this->data]
         );
     }
 

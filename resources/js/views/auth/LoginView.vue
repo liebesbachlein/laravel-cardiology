@@ -3,7 +3,7 @@
   <div class="site-content greyback login">
       <div class="site-content-in">
           
-        <form method="POST" @submit.prevent="handleSubmit" :class="{'success-form' : successSubmit}" autocomplete="on" >
+        <form method="POST" @submit.prevent="handleSubmit" :class="{'success-form' : successSubmit}" >
           <div class="subpage-title" style="text-align: center;">Панель администратора</div>
           <label>Email</label>
           <input  :class="{'invalid' : errorEmail}" type="email" id="email"  name="email"  v-model="email" @blur="validateEmail" required>
@@ -15,6 +15,8 @@
               <LoaderCircle style="position: absolute;" v-if="loader"/>
               <input type="submit" :disabled="!enableSubmit" class="long-blue-button" value="Войти">
           </div>
+          <label v-if="errorSubmit" style="color: var(--bright-red)">{{ errorSubmit }}</label>
+
     
         </form>
       </div>
@@ -24,7 +26,7 @@
   
   
   <script>
-  //import axios from 'axios';
+  import axios from 'axios';
   import LoaderCircle from '@/components/LoaderCircle.vue'
   
   export default {
@@ -77,26 +79,23 @@
             
           const data = {
             email: this.email,
-            password: this.password
+            password: this.password,
+            name: 'Admin',
+            user_type: 'admin'
           }
-  
-          /*axios.post('/api/post/membership-items', data).then((response) => {
+          //console.log(data);
+          axios.post('/users/login', data).then((response) => {
             if(response.status != 200) {
-              throw Error('Произошла ошибка 100')
+              throw Error('Произошла ошибка')
             }
-            axios.post('/api/mail_membership/send_mail', data).then((mailRes) => {
-              if(mailRes.status != 200) {
-                throw Error('Произошла ошибка 101')
-              }
-            }).catch((err) => {          
-            this.errorSubmit = err.message
-            })
-            this.successSubmit = true  
+            this.successSubmit = true 
+            this.loader = null
+            this.$router.push({ path: '/admin/dashboard/' }) 
           }).catch((err) => {          
             this.errorSubmit = err.message
-          })*/
-          this.successSubmit = true  
             this.loader = null
+          })
+            
           }
       
   

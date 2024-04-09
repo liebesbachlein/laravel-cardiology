@@ -30,7 +30,7 @@ class MembershipMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            from: new Address('info@info.ahcvp.kz', 'info@info.ahcvp.kz'),
+            from: new Address('info@ahcvp.kz', 'info@ahcvp.kz'),
             subject: 'Заяка на Членство',
         );
     }

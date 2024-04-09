@@ -177,3 +177,102 @@ a.disabled-a {
     text-decoration: underline;
 }
 */
+
+/*             Posters                 */
+
+.cover-button {
+    height: 3.125rem;
+    width: 11rem;
+    border-radius: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--plain-text-font);
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--component-accent-color1);
+    background-color: #FFF;
+    margin-top: 0.5rem;
+}
+
+.poster {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    padding: 0 1rem;
+}
+
+
+.poster-details-name {
+    display: inline-block;
+    height: 100%;
+    text-wrap: wrap;
+    font-size: 0.875rem;
+    color: #FFF;
+}
+
+.poster-city, .poster-date {
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: 1.125rem;
+    font-family: var(--plain-text-font);
+    color: #FFF;
+    align-items: center;
+}
+
+.poster-city {
+    margin: 0.5rem 0;
+}
+
+.poster-date {
+    margin-bottom: 1rem;
+}
+
+.poster img {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    margin-right: 0.25rem;
+}
+
+.poster-details-box {
+    margin-bottom: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 0.5rem;
+    background-color: #AD78D8bc;
+    padding: 0.25rem 0.5rem;
+    max-width: auto;
+}
+
+@media only screen and (min-width: 1024px) {
+    
+    .cover-button:hover {
+    color: var(--component-accent-color2)
+}
+
+.poster {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+}
+
+    
+.poster-details-name {
+    font-size: 1rem;
+}
+
+.poster-city, .poster-date {
+    font-size: 1.25rem;
+}
+.poster-city {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+}

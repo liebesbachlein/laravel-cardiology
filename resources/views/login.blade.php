@@ -4,10 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Laravel Project</title>
-        
         @vite(['resources/js/app.js'])
     </head>
     <body>
-        <div id="app"></div>
+        <div id="app">
+            <LoginView/>
+        </div>
     </body>
 </html>

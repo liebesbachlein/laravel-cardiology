@@ -73,11 +73,11 @@ export default {
     components: {ChevronRight,  SideBarHeadingsNoUrl, Footer, LoaderCircle},
     mounted() {
         if(this.newsItem.value != null) {
-            const link = document.getElementById(news.id)
+            const link = document.getElementById('programme')
             if(link != null) {
                 link.addEventListener('click.prevent', (e) => {
                     e.preventDefault()
-                    downloadItem(news.id, 'Программа мероприятия (pdf)')
+                    downloadItem('/news_resources/' + news.id, 'Программа мероприятия (pdf)')
                     e.stopImmediatePropagation();
                 })
             }

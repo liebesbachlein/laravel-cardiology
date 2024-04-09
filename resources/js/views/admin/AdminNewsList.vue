@@ -14,7 +14,7 @@
 
                 <div class="multi-page-box">
                     <div class="newsfeed-timeline multi-page-content">
-                        <router-link to="/admin/news-list/add-news" class="short-blue-button admin-add-button" tag="div">
+                        <router-link to="/admin/dashboard/news-list/add-news" class="short-blue-button admin-add-button" tag="div">
                             Добавить новость
                         </router-link>
                         <div v-if="error">

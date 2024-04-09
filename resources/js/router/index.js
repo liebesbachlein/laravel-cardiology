@@ -105,12 +105,19 @@ const routes = [
      }
   },
   {
-    path: '/admin/',
+    path: '/login/',
     name: 'LoginView',
     component: LoginView,
     meta: {
       hideNavbar: true,
      },
+  }, 
+  {
+    path: '/admin',
+    redirect: '/admin/dashboard', 
+    meta: {
+      hideNavbar: true,
+     }
   }, 
   {
     path: '/admin/dashboard',
