@@ -13,7 +13,7 @@
         </div>
 
         <div v-for="(output, ID1) in outputs" class="box-box" :key="ID1">
-            <div class="red-line-gallery"></div>
+            <div class="red-line-gallery" v-if="ID1 != 0"></div>
             <div class="gallery-header">{{ output.name }}</div>
             <div class="gallery-box">
                 <div v-for="(URL, ID2) in output.data" class="gallery-flexbox-item" :key="ID2">
@@ -43,6 +43,7 @@ export default {
     data: function() {
         return {
             data: [
+            ['event6', 30, "Конференция «Академия Кардио-Терапевта: Региональный Тур» в г. Караганда (24 — 25 апреля 2024)"],
             ['event5', 68, "Конференция «Академия Кардио-Терапевта: Региональный Тур» в г. Усть-Каменогорск (14 — 15 марта 2024)"],
             ['event4', 41, "VI Республиканская научно-практическая конференция «Секреты женского сердца – 2024» в г. Алматы (29 февраля 2024)"],
             ['event3', 32, "Конференция «Академия Кардио-Терапевта: Региональный Тур» в г. Шымкент (8 — 9 февраля 2024)"],

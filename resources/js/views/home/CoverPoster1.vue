@@ -3,33 +3,36 @@
         <div class="box">
         
         <div class="header1">
-            <div class="poster-title">Конференция в Караганде</div>
-            <div class="poster-details-box">
-                <div class="poster-details-name">
-                    Не упустите шанс присоединиться к этому значимому мероприятию, где вы сможете не только обогатить свои знания, но и приобрести практические навыки
-                </div>
-            </div>
-            <div class="poster-city"><img src="@/assets/address-white.svg">24 — 25 апреля</div>
-            <div class="poster-date"><img src="@/assets/time.svg">Гостиничный комплекс "Cosmonaut" по адресу ул. Аманжолова 162а</div>
-            <router-link class="cover-button" tag="div" to="/news/konferenziya-v-karagange/">
-                Читать →</router-link>
+            <div>Научно-практическая конференция</div>
+            <div>Многогранная гипертония</div>
+            <div class="poster-city"><img src="@/assets/address-white.svg">              
+                Отель "Kazzhol Park Almaty", ул. Наурызбай батыра, 108, Алматы</div>
+            <div class="poster-date"><img src="@/assets/time.svg">17 мая</div>
+            <a class="cover-button" tag="div" href="https://ahcvp.kz/">
+                Зарегистрироваться →</a>
         </div>
     
         </div>
+        
     </div>
-    
     
     </template>
     
-    <script>
     
-    </script>
+<script setup>
+
+const emits = defineEmits(['lightMode'])
+emits('darkMode')
+
+</script>
     
-    <style>
-        
+<style>
     
+    .poster1 .cover-button {
+        width: 13rem;
+    }
     .poster1 {
-        background-image: url('/covers/cover28-mobile.jpg');
+        background-image: url('/covers/cover25-mobile.jpg');
         padding: 0 1rem;
     }
     
@@ -42,36 +45,40 @@
     }
     
     .poster1 .header1 {
-        width: 95%;
+        width: 90%;
         display: flex;
         text-align: left;
         flex-direction: column;
     }
-    
-    .poster1 .header1 .poster-title {
-        font-family: var(--tenor-font);
-        font-size: 3rem;
+    .poster1 .header1 div:nth-child(1) {
+        font-family: var(--plain-text-font);
+        font-size: 1.125rem;
         font-weight: 400;
-        color: var(--component-accent-color1);
+        color: #FFFF;
+    }
     
+    .poster1 .header1 div:nth-child(2){
+        font-family: var(--tenor-font);
+        font-size: 2.5rem;
+        font-weight: 400;
+        color: #FFFF;
         margin-bottom: 1rem;
         
     }
-
-
-    .poster1 .poster-details-box {
-        margin-bottom: 0.5rem;
-
-        background-color: #559774bc;
-
+    
+    
+    
+    .poster1 .cover-button {
+        margin-top: 1rem;
     }
-
+    
     
     @media only screen and (min-width: 1024px) {
     
+
     
     .poster1 {
-        background-image: url('/covers/cover28.jpg');
+        background-image: url('/covers/cover25.jpg');
     }
     .poster1 .box {
         display: inline-flex;
@@ -84,124 +91,21 @@
         width: 50%;
     }
     
-    .poster1 .header1  .poster-title{
-        font-size: 3rem;
+    .poster1 .header1 div:nth-child(1){
         margin-bottom: 1rem;
-        font-weight: 400;
+        font-size: 1.5rem;
     }
-
+    
+    .poster1 .header1 div:nth-child(2){
+        margin: 0;
+        font-size: 4rem;
+    }
+    
+    
+    
     }
     
     </style>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--<template>
-
-    <div class="poster poster1">
-        <div class="box">
-        
-        <div class="header1">
-            <div>Успешно проведена Конференция «Секреты Женского Сердца»</div>
-        <div>Уникальность конференции заключалась в ее гибридном формате, который позволил участникам принять участие как лично, так и через онлайн-платформу, обеспечивая максимальную доступность для всех заинтересованных лиц</div>
-        <router-link class="cover-button" tag="div" to="/news/proshla-konferentzya-secrety-zheskogo-serdtza-2024/">
-                Подробнее →</router-link>
-        </div>
-    
-        </div>
-    </div>
     
     
-    </template>
-    -->
 
-    
-/*
-    .poster1 {
-        background-image: url('/covers/cover24-mobile.jpg');
-        padding: 0 1rem;
-    }
-    
-    
-    .poster1 .box {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        margin-top: 2rem;
-    }
-    
-    .poster1 .header1 {
-        width: 95%;
-        display: flex;
-        text-align: left;
-        flex-direction: column;
-    }
-    
-
-    .poster1 .header1 div:nth-child(1){
-        font-family: var(--plain-text-font);
-        font-size: 2rem;
-        font-weight: 400;
-        color: #3E3561;
-        margin-bottom: 1rem;
-    }
-
-    .poster1 .header1 div:nth-child(2){
-        font-size: 1rem;
-        color: #FFF;
-        
-    }
-
-    
-    .poster1 .cover-button {
-        margin: 2rem 0 0 0; 
-    }
-    
-    @media only screen and (min-width: 1024px) {
-    
-    .poster1 {
-        background-image: url('/covers/cover24.jpg');
-    }
-    .poster1 .header1 {
-        width: 80%;
-    }
-
-    .poster1 .header1 div:nth-child(1){
-        font-size: 3rem;
-
-    }
-
-    .poster1 .header1 div:nth-child(2){
-        font-size: 1.25rem;
-        color: #2D2D2D;
-    }
-
-    .poster1 .cover-button {
-        margin: 2rem 2rem 0 auto; 
-    }
-}
-
-*/

@@ -22,6 +22,12 @@
 
 </template>
 
+
+<script>
+
+
+</script>
+
 <style>
 
 p.cursive {

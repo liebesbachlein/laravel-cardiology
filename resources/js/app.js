@@ -5,6 +5,8 @@ import './assets/global.css';
 
 const app = createApp(App)
 
+app.config.globalProperties.$coverLightMode = false
+
 app.use(router)
 
 app.mount('#app')

@@ -5,18 +5,13 @@
         <div class="navbar-block">
           
           <div class="navbar-in-block">
-          <!--
-            <router-link to="/">
-              <div class="logo"></div>
-            </router-link>
-          -->
+  
           </div>
 
           <div class="navbar-in-block mobile-side" @click="closeSideMenu">
             <div class="mobile-side-menu-box">
               
             <img src="@/assets/close.svg">
-            <!--<img src="@/assets/three-dots.svg">-->
             </div>
           </div>
         </div>
@@ -198,6 +193,11 @@ export default {
 
 <style>
 
+.mobile-side img {
+  width: 2rem;
+  height: 2rem;
+}
+
   .words-enter-active,
 .words-leave-active {
   transition: opacity 0.1s ease;
@@ -255,7 +255,7 @@ export default {
   font-size: 1rem;
   padding-left: 0.5rem;
   font-weight: 400;
-  color: #454545;
+  color: #6a6a6a;
   letter-spacing: 1px;
 }
 
@@ -335,6 +335,17 @@ export default {
 
 .side-pop-menu .mobile-side-menu-box {
   border: 1px solid transparent
+}
+
+.side-pop-menu .grey-line {
+  width: 90%;
+  display: block;
+  margin: 0 auto 0 0;
+  border-color: #5b92c9;
+}
+
+.pop-lower {
+  margin: auto 0 6rem 0;
 }
 
 </style>

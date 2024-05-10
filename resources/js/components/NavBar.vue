@@ -1,5 +1,5 @@
 <template>
-  <div class="navbar" >
+  <div class="navbar" id="navBar">
   <div class="navbar-block">
 
     <div class="navbar-in-block">
@@ -10,7 +10,7 @@
   
     <div class="navbar-in-block all-menu-navs">
        
-      <div class="navbar-item"   @mouseleave="popAbout = false">
+      <div class="navbar-item"  @mouseleave="popAbout = false">
         <Transition name="pop-menu"><AboutPopMenu v-if="popAbout" @closeAbout="popAbout = false"/></Transition>
         <div class="menu-item-round">
           <router-link  @mouseover="popAbout = true" :to="{name: 'AboutView', params: {id: 'us'}}" @click="popAbout = false" :class="{'a-hover': popAbout}">О нас</router-link>
@@ -42,10 +42,8 @@
     </div>
     
     <div class="navbar-in-block mobile-side" @click="openSideMenu">
-      <div class="mobile-side-menu-box">
-        <div class="navbar-side-text">Меню</div>
-      <img src="@/assets/three-lines.svg">
-      <!--<img src="@/assets/three-dots.svg">-->
+      <div class="mobile-side-menu-box cover-slide-transition">
+        <div class="navbar-side-text cover-slide-transition">Меню</div>
       </div>
     </div>
   </div>
@@ -62,19 +60,21 @@ import PtPopMenu from './PtPopMenu.vue';
 
 export default {
   components: {AboutPopMenu, SpPopMenu, PtPopMenu},
+  props: ['lightMode'],
   data: function () {
     return {
       popAbout: false, 
       popNews: false, 
       popSp: false, 
-      popPt: false
+      popPt: false,
+      coverLightMode: this.coverLightMode
     }
   }, 
   methods: {
 
-openSideMenu() {
-  this.$emit('openSideMenu')
-}
+  openSideMenu() {
+    this.$emit('openSideMenu')
+  }
 }
 }
 
@@ -90,17 +90,23 @@ openSideMenu() {
     margin: 0 auto;
 }
 
+.nav-light-mode.home .grey-line {
+    border-top: 1px solid #2e3040bb;
+}
+
 .home .grey-line {
- display: none;
+    display: block;
+    width: 80%;
+    border-top: 1px solid #ffffff9b;
+    margin: 0 auto;
 }
 
 .short .grey-line {
     display: block;
     width: 80%;
-    border-top: 1px solid var(--component-accent-color2);
+    border-top: 1px solid #98abcf;
     margin: 0 auto;
 }
-
 
 .navbar {
   display: block;
@@ -160,26 +166,10 @@ openSideMenu() {
   background-image: url("@/assets/logo-square.png");
 }
 
-/*
-.home .logo-home-container {
-  height: 3.5rem; 
-  width: 13rem;
-  display: inline-block;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  background-color: rgba(193, 209, 229, 0.5);
-}
-*/
 .home .logo {
   height: 2.5rem; 
   width: 2.5rem;
   background-image: url("@/assets/logo-square.png");
-  /*
-  height: 2.5rem; 
-  width: calc(2.5rem * 4.7);
-  background-image: url("@/assets/logo01.png");
-  background-position: center;
-  background-size: cover;*/
 }
 
 .mobile-side-menu-box {
@@ -189,20 +179,29 @@ openSideMenu() {
   border-radius: 0.125rem;
   border: 1px solid rgba(193, 209, 229, 0.5);
   align-items: center;
-  
 }
 
-.mobile-side img {
-    display: inline-block;
-    width: 1.5rem;
-    height: 1.5rem;
+.short .mobile-side-menu-box {
+  border-color: #98abcf;
+} 
+
+.nav-light-mode .mobile-side-menu-box  {
+  border-color: #2e3040bb;
 }
 
 .navbar-side-text {
   font-family: var(--news-title-font);
   font-size: 1rem;
-  color: #5b92c9;
+  color: #d4e5f5;
   text-transform: uppercase;
+}
+
+.short .navbar-side-text {
+  color: #5b92c9;
+}
+
+.nav-light-mode .navbar-side-text {
+  color: #212331;
 }
 
 
@@ -220,13 +219,6 @@ openSideMenu() {
   /*max-height: 0;*/
 }
 
-.home .grey-line {
-    display: block;
-    width: 80%;
-    border-top: 1px solid #ffffff9b;
-    margin: 0 auto;
-}
-
 .short .grey-line {
   display: none;
 }
@@ -239,6 +231,10 @@ openSideMenu() {
 .home .divider {
   color: #ffffff9b;
   display: inline
+}
+
+.nav-light-mode.home .divider {
+  color: #212331;
 }
 
 .short {
@@ -296,6 +292,10 @@ openSideMenu() {
   color: #ffffffeb;
   border-radius: 0.5rem;
   font-weight: 600;
+}
+
+.nav-light-mode.home .menu-item-round>a {
+  color: #212331;
 }
 
 .navbar .menu-item-round {

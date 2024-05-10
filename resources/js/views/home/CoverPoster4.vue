@@ -14,12 +14,10 @@
     
     </template>
     
-    <script>
-    export default {
-        mounted() {
-            this.$emit('dark')
-        },
-    }
+    <script setup>
+    
+    const emits = defineEmits(['darkMode', 'lightMode'])
+    emits('darkMode')
     </script>
     
     <style>

@@ -1,155 +1,194 @@
 <template>
-
+    <div :class="lightMode ? 'semicircle-box semicircle-light-mode' : 'semicircle-box'">
+        <div class="semicircle" @click="clickNextLeftCover" @mouseover="clearOldInterval" @mouseleave="setNewInterval">
+            ←
+        </div>
+        <div class="semicircle" @click="clickNextRightCover" @mouseover="clearOldInterval" @mouseleave="setNewInterval">
+            →
+        </div>
+    </div>
     <div class="cover">
-    
         <div class="cover-box">
-            <!--
-            <div class="semicircle-box">
-                <div class="semicircle-left">
-                    <img src="@/assets/left-arrow.svg">
-                </div>
-            </div>
-            <div class="semicircle-box">
-                <div class="semicircle-right">
-                    <img src="@/assets/right-arrow.svg">
-                </div>
-            </div>
-            -->
-                <CoverPoster1 id="cover1" class="zindex1"/>
-                <CoverPoster2 id="cover2" class="zindex2-next"/>
-                <CoverPoster3 id="cover3" class="zindex2-next"/>
-                <div class="carousel">
-                <div class="carousel-box">
-                    <div class="indicator" @click="changeCover(1)" :class="{'indicator-active': showCover1}"></div>
-                    <div class="indicator" @click="changeCover(2)" :class="{'indicator-active': showCover2}"></div>
-                    <div class="indicator" @click="changeCover(3)" :class="{'indicator-active': showCover3}"></div>
+            <component @touchstart="storeX($event)" @touchmove="touchUpdateCover(i, $event)"  v-for="i in numberOfSlides" :is="components[i - 1]" :id="'cover' + i" :key="i" :class="i == 1 ? 'cover-visible' : 'cover-slide-left'" @lightMode="setLightMode(i - 1)" @darkMode="setDarkMode(i - 1)"/>
+            <div class="carousel" >
+                <div class="carousel-box" @mouseover="clearOldInterval" @mouseleave="setNewInterval">
+                    <div class="indicator" v-for="i in numberOfSlides" :key="i" @click="changeCover(i)" :class="{'indicator-active': controlIndicators[i - 1]}"></div>
                 </div>
             </div> 
         </div>
     </div>
-    </template>
-    
-    <script>
-    import { ref } from 'vue'
-    import CoverPoster1 from './CoverPoster1.vue'
-    import CoverPoster2 from './CoverPoster2.vue'
-    import CoverPoster3 from './CoverPoster3.vue'
-    
-    
-    export default {
-        components: {CoverPoster1, CoverPoster2, CoverPoster3},
-    
-        setup() {
-            const showCover1 = ref(true)
-            const showCover2 = ref(false)
-            const showCover3 = ref(false)
-            let index = 1
-    
-            const changeCover = (currentCover) => {
-                if (currentCover == 1 ) {
-                    if (index == 3) {
-                        document.getElementById('cover' + index).className ='poster ' + 'poster' + index + ' zindex2-now'
-                        index = 1
-                        document.getElementById('cover' + index).className = 'poster ' + 'poster' + index + ' zindex1'
-                        document.getElementById('cover' + nextIndexLeft(index)).className = 'poster ' + 'poster' + nextIndexLeft(index) + ' zindex2-next'
-                    } else {
-                        document.getElementById('cover' + index).className ='poster ' + 'poster' + index + ' zindex3-now'
-                        index = 1
-                        document.getElementById('cover' + index).className = 'poster ' + 'poster' + index + ' zindex1'
-                        document.getElementById('cover' + nextIndexRight(index)).className = 'poster ' + 'poster' + nextIndexRight(index) + ' zindex3-next'
-                    }
-    
-                    showCover1.value = true
-                    showCover2.value = false
-                    showCover3.value = false
-    
-                } else if (currentCover == 2) {
-                    if (index == 1) {
-                        document.getElementById('cover' + index).className = 'poster ' + 'poster' + index + ' zindex2-now'
-                        index = 2
-                        document.getElementById('cover' + index).className = 'poster ' + 'poster' + index + ' zindex1'
-                        document.getElementById('cover' + nextIndexLeft(index)).className = 'poster ' + 'poster' + nextIndexLeft(index) + ' zindex2-next'
-                    } else {
-                        document.getElementById('cover' + index).className = 'poster ' + 'poster' + index + ' zindex3-now'
-                        index = 2
-                        document.getElementById('cover' + index).className = 'poster ' + 'poster' + index + ' zindex1'
-                        document.getElementById('cover' + nextIndexRight(index)).className = 'poster ' + 'poster' + nextIndexRight(index) + ' zindex3-next'
-                    }
-                    showCover1.value = false
-                    showCover2.value = true
-                    showCover3.value = false
-                    
-                } else if (currentCover == 3){
-                    if(index == 2) {
-                        document.getElementById('cover' + index).className = 'poster ' + 'poster' + index + ' zindex2-now'
-                        index = 3
-                        document.getElementById('cover' + index).className = 'poster ' + 'poster' + index + ' zindex1'
-                        document.getElementById('cover' + nextIndexLeft(index)).className = 'poster ' + 'poster' + nextIndexLeft(index) + ' zindex2-next'
-                    } else {
-                        document.getElementById('cover' + index).className = 'poster ' + 'poster' + index + ' zindex3-now'
-                        index = 3
-                        document.getElementById('cover' + index).className = 'poster ' + 'poster' + index + ' zindex1'
-                        document.getElementById('cover' + nextIndexRight(index)).className = 'poster ' + 'poster' + nextIndexRight(index) + ' zindex3-next'
-    
-                    }
-                    showCover1.value = false
-                    showCover2.value = false
-                    showCover3.value = true
-                }
-            }
-    
-            const nextIndexLeft = function(i) {
-                if (i == 1) {
-                    return 2
-                } else if (i == 2) { 
-                    return 3
-                } else if (i == 3) {
-                    return 1
-                }
-            }
-    
-            const nextIndexRight = function(i) {
-                if (i == 1) {
-                    return 3
-                } else if (i == 2) { 
-                    return 1
-                } else if (i == 3) {
-                    return 2
-                }
-            }
-    
-        
-    window.onload = async function () { 
-                    
-        return setInterval(function () { 
-                if (index == 1) {    
-                    if( !document.getElementById('cover1') || !document.getElementById('cover2') || !document.getElementById('cover3') ) {
-                        return false
-                    }
-                    setTimeout(() => changeCover(nextIndexLeft(index), 500)); 
-                } else if (index == 2) {
-                    if( !document.getElementById('cover1') || !document.getElementById('cover2') || !document.getElementById('cover3') ) {
-                        return false
-                    }
-                    setTimeout(() => changeCover(nextIndexLeft(index), 500)); 
-                } else if (index == 3){                
-                    if( !document.getElementById('cover1') || !document.getElementById('cover2') || !document.getElementById('cover3') ) {
-                        return false
-                    }
-                    setTimeout(() => changeCover(nextIndexLeft(index), 500)); 
-                }
-                
-            }, 10000); 
-        }
-    
+</template>
             
-        return {showCover1, showCover2, showCover3, changeCover}
+            
+<script setup>
+import { onMounted, onUnmounted, ref } from 'vue'
+import CoverPoster1 from './CoverPoster1.vue'
+import CoverPoster2 from './CoverPoster2.vue'
+import CoverPoster3 from './CoverPoster3.vue'
+import CoverPoster4 from './CoverPoster4.vue'
+import CoverPoster5 from './CoverPoster5.vue'
+
+const emits = defineEmits(['lightMode, darkMode'])
+let intervalId = null
+let prevCover = 1
+const numberOfSlides = 3
+const controlIndicators = ref([]);
+const components = [CoverPoster1, CoverPoster2, CoverPoster3, CoverPoster4, CoverPoster5]
+const coverModes = []
+let inView = false
+let startX = null
+const lightMode = ref(false)
+
+for (let i = 0; i < numberOfSlides; i++) {
+    controlIndicators.value.push(false);
+    coverModes.push(false) // false -> dark
+}
+controlIndicators.value[0] = true
+
+function storeX (e) {                                   
+    startX = e.touches[0].pageX
+}
+
+function touchUpdateCover (tappedCover, e) { 
+    const movePos = e.touches[0].pageX 
+    if (startX && movePos) {                                
+        if(startX - movePos < 0) {
+            changeCoverNoInterval(nextIndexLeft(tappedCover))
+        } else {
+            changeCoverNoInterval(nextIndexRight(tappedCover))
+        }
+        startX = null
     }
+
+}
+
+function clickNextLeftCover () {
+    changeCoverNoInterval(nextIndexLeft(prevCover))
+}
+
+function clickNextRightCover () {
+    changeCoverNoInterval(nextIndexRight(prevCover))
+}
+
+function setLightMode(i) {
+    coverModes[i] = true
+}
+
+function setDarkMode(i) {
+    coverModes[i] = false
+}
+
+function makeEmit(tappedCover) {
+    if(coverModes[tappedCover - 1]) {
+        emits('lightMode')
+        lightMode.value = true 
+    } else {
+        emits('darkMode')
+        lightMode.value = false 
     }
+}
+
+function tuneControlIndicators (tappedIndex) {
+    for (let i = 0; i < numberOfSlides; i++) {
+        controlIndicators.value[i] = false;
+    }
+    controlIndicators.value[tappedIndex - 1] = true
+}
+
+async function changeCover(tappedCover)  {
+    makeEmit(tappedCover)
+    clearOldInterval()
+    await _changeCover(tappedCover)
+    setNewInterval()
+}
+
+async function changeCoverNoInterval(tappedCover) {
+    makeEmit(tappedCover)
+    clearOldInterval()
+    await _changeCover(tappedCover)
+}
+
+async function _changeCover(tappedCover) {
+    if (tappedCover == prevCover) {
+        return
+    }
+    const tappedEl = document.getElementById('cover' + tappedCover)
+    tappedEl.classList.remove('cover-slide-transition')
+    tappedEl.className = 'poster ' + 'poster' + tappedCover + (prevCover < tappedCover ? ' cover-slide-left' : ' cover-slide-right') // 3 -> 1 prev -> 2 tap (left);  1 -> 3 prev -> 2 tap (right)
+    setTimeout(() => {
+        tappedEl.className = 'poster ' + 'poster' + tappedCover + ' cover-visible' + ' cover-slide-transition'
+        document.getElementById('cover' + prevCover).className = 'poster ' + 'poster' + prevCover + (prevCover < tappedCover ? ' cover-slide-right' : ' cover-slide-left') + ' cover-slide-transition'
+        tuneControlIndicators(tappedCover)
+        prevCover = tappedCover
+    }, 1)
+
+
+}
+
+function nextIndexRight(i) {
+    return i == numberOfSlides ? 1 : i + 1
+}
+
+
+function nextIndexLeft(i) {
+    return i == 1 ? numberOfSlides : i - 1
+}
+
+onMounted(() => {
+        makeEmit(1)
+        setNewInterval()
+
+        window.addEventListener('focus', onWindowFocusChange);
+        window.addEventListener('blur', onWindowFocusChange);
+        window.addEventListener('pageshow', onWindowFocusChange);
+        window.addEventListener('pagehide', onWindowFocusChange);
+    } 
+)
+
+function onWindowFocusChange(e) {
+    if ({ focus: 1, pageshow: 1 }[e.type]) {
+        if (inView) return
+        this.tabFocus = true
+        inView = true
+        if (intervalId == null) {
+            setNewInterval()
+        }
+    } else if (inView) {
+        this.tabFocus = !this.tabFocus
+        inView = false
+        clearOldInterval()
+    }
+}
+
+async function setNewInterval() {
+    intervalId = setInterval(function () {
+        setTimeout(() => {
+            makeEmit(nextIndexRight(prevCover))
+            _changeCover(nextIndexRight(prevCover));
+        }, 
+        500)
+    }, 9000)
+}
+
+function clearOldInterval() {
+    if (intervalId) {
+        clearInterval(intervalId)
+    }
+    intervalId = null
+}
+
+onUnmounted(() => clearOldInterval)
+//return {controlIndicators, changeCover, numberOfSlides, components, setLightMode, setDarkMode}
+
+
+</script>
     
-    </script>
-    
-    <style>
+<style>
+
+
+    .semicircle-box {
+        display: none
+    }
     
     .cover {
         width: 100%;
@@ -159,31 +198,27 @@
         
     }
     
-    .zindex1, .zindex2-now, .zindex2-next, .zindex3-now, .zindex3-next {
+    .cover-visible, .cover-slide-right, .cover-slide-left {
         position: absolute;
-        transition: clip-path 1s ease-in-out;
+        transition: none;
     }
     
-    .zindex1 {
+    .cover-visible {
         clip-path: inset(0 0 0 0); 
     }
     
-    .zindex2-now {
+    .cover-slide-right {
         clip-path: inset(0 100% 0 0); 
     }
     
-    .zindex2-next  {
+    .cover-slide-left  {
         clip-path: inset(0 0 0 100%); 
     }
-    
-    .zindex3-now {
-        clip-path: inset(0 0 0 100% ); 
+
+    .cover-slide-transition, .home .grey-line {
+        transition: all 0.5s ease-out;
     }
-    
-    .zindex3-next  {
-        clip-path: inset(0 100% 0 0); 
-    }
-    
+
     .poster-image {
         position: absolute;
         z-index: -1;
@@ -237,12 +272,43 @@
     @media only screen and (min-width: 1024px) {
     
     .cover-box {
-        height: calc(100vw * 9 / 16);
+        min-height: calc(100vw * 8 / 16);
+        height: 100vh;
     }
     
     .carousel {
-        bottom: 10%;
+        bottom: 5%;
     
+    }
+
+    .semicircle-box {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        min-height: calc(100vw * 8 / 16);
+        height: 100vh;
+        width: 100%;
+        position: absolute;
+        z-index: 100;
+    }
+
+    .semicircle {
+        font-size: 3rem;
+        color: #FFF;
+        cursor: pointer;
+    }
+
+    .semicircle-light-mode .semicircle {
+        color: #000;
+    }
+
+    .semicircle-box>div:nth-child(1) {
+        padding-left: 1rem;
+    }
+
+    .semicircle-box>div:nth-child(2) {
+        padding-right: 1rem;
     }
     
     }
