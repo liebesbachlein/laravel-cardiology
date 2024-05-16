@@ -4,19 +4,19 @@
         <div class="news-box-padding">
             <div class="news-box">
                 <div v-if="!mobile" class="newsmini-upper">
-                    <DateBox :date1="news.date1" :date2="news.date2"  :month="news.month"/>
-                    <AddressBox :address="news.address"/>
+                    <DateBox :date_start="event.date_start" :date_end="event.date_end"  :month="months[event.month - 1]"/>
+                    <AddressBox :address="event.address"/>
                 </div>  
 
-                <DateBox v-if="mobile"  id="mobile1" :date1="news.date1" :date2="news.date2"  :month="news.month"/>
-                <AddressBox v-if="mobile" id="mobile2" :address="news.address"/>
+                <DateBox v-if="mobile"  id="mobile1" :date_start="event.date_start" :date_end="event.date_end"  :month="months[event.month - 1]"/>
+                <AddressBox v-if="mobile" id="mobile2" :address="event.address"/>
         
                 <div class="news-title">
-                    <router-link :to="news.url">
-                        {{ news.title }}
+                    <router-link :to="event.url">
+                        {{ event.title }}
                     </router-link>
                 </div>
-                <div class="news-detail">{{ news.details }}</div>  
+                <div class="news-detail">{{ event.details }}</div>  
             </div>
         <LineCircle class="newsmini-line"/>
         </div>
@@ -31,11 +31,25 @@
     import AddressBox from './AddressBox.vue';
     
     export default {
-        props: ['news'],
+        props: ['event'],
         components: {LineCircle, ChevronRight, DateBox, AddressBox},
         data: function() {
             return {
-                mobile: null
+                mobile: null,
+                months: [
+    'Января',
+    'Февраля',
+    'Марта',
+    'Апреля',
+    'Мая',
+    'Июня',
+    'Июля',
+    'Августа',
+    'Сентября',
+    'Октября',
+    'Ноября',
+    'Декабря'
+]
             }
         },
         mounted() {

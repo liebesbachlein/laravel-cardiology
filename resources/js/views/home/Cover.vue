@@ -37,6 +37,7 @@ const components = [CoverPoster1, CoverPoster2, CoverPoster3, CoverPoster4, Cove
 const coverModes = []
 let inView = false
 let startX = null
+let startY = null
 const lightMode = ref(false)
 
 for (let i = 0; i < numberOfSlides; i++) {
@@ -47,11 +48,17 @@ controlIndicators.value[0] = true
 
 function storeX (e) {                                   
     startX = e.touches[0].pageX
+    startY = e.touches[0].pageY
 }
 
 function touchUpdateCover (tappedCover, e) { 
-    const movePos = e.touches[0].pageX 
-    if (startX && movePos) {                                
+    const movePos = e.touches[0].pageX
+    const movePosY = e.touches[0].pageY
+
+    if (startX && movePos) {  
+        if(Math.abs(startX - movePos) < Math.abs(startY - movePosY)) {
+            return
+        }                              
         if(startX - movePos < 0) {
             changeCoverNoInterval(nextIndexLeft(tappedCover))
         } else {
@@ -290,17 +297,17 @@ onUnmounted(() => clearOldInterval)
         height: 100vh;
         width: 100%;
         position: absolute;
-        z-index: 100;
+        z-index: 1;
     }
 
     .semicircle {
         font-size: 3rem;
-        color: #FFF;
+        color: #ffffffce;
         cursor: pointer;
     }
 
     .semicircle-light-mode .semicircle {
-        color: #000;
+        color: #000000c0;
     }
 
     .semicircle-box>div:nth-child(1) {

@@ -1,6 +1,6 @@
 <template>
     <div class="monthblock">
-        <div class="month" :class="{'month-light': lightUp}">{{ monthName }}</div>
+        <div class="month" :class="{'month-light': lightUp}">{{ month }}</div>
 
     </div>
 
@@ -8,7 +8,7 @@
 
 <script>
 export default {
-    props: ['monthName', 'lightUp']
+    props: ['month', 'lightUp']
 }
 </script>
 
@@ -37,6 +37,7 @@ export default {
     font-weight: 400;
     font-size: 0.875rem;
     background-color: var(--component-grey-color);
+    text-transform: capitalize;
 }
 
 .month-light {

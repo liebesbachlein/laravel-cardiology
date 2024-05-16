@@ -71,7 +71,10 @@ function storeX (e) {
 
 function touchUpdateCover (e) { 
     const movePos = e.touches[0].pageX 
-    if (startX && movePos) {                                
+    if (startX && movePos) {        
+        if(Math.abs(startX - movePos) < 30) {
+            return
+        }                         
         if(startX - movePos < 0) {
             clickBackward()
         } else {

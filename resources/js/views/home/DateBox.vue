@@ -1,8 +1,8 @@
 <template>
-    <div class="date-total" v-if="date2 != ''">
+    <div class="date-total" v-if="date_end">
         <div class="date-outer">
             <div class="date-inner">
-                {{ date1 }}
+                {{ date_start }}
             </div>
         </div>
 
@@ -10,7 +10,7 @@
 
         <div class="date-outer">
             <div class="date-inner">
-                {{ date2 }}
+                {{ date_end }}
             </div>
         </div>
 
@@ -22,7 +22,7 @@
     <div class="date-total" v-else>
         <div class="date-outer">
             <div class="date-inner">
-                {{ date1 }}
+                {{ date_start }}
             </div>
 
         </div>
@@ -36,7 +36,7 @@
 
 <script>
 export default {
-    props: ['date1', 'date2', 'month']
+    props: ['date_start', 'date_end', 'month']
 }
 
 </script>
@@ -78,7 +78,8 @@ export default {
     padding-top: 0.25rem;
     font-size: 1rem;
     font-weight: 600;
-    color: #2D2D2D
+    color: #2D2D2D;
+    text-transform: lowercase;
 }
 
 @media only screen and (min-width: 1024px) {
