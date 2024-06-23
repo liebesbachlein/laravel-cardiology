@@ -1,12 +1,12 @@
 <template>
 
     <div class="poster poster3">
-        <div class="box">
+        <div class="poster-inner">
         
         <div class="header1">
             <div>Успешно проведена Конференция в Караганде</div>
         <div>24-25 апреля в гостиничном комплексе «Cosmonaut»  в городе Караганда, состоялась очная региональная школа «Академия кардио-терапевта: Региональный тур»</div>
-        <router-link class="cover-button" tag="div" to="/news/academiya-kardio-karaganda-2024-4/">
+        <router-link class="poster-button" tag="div" to="/news/academiya-kardio-karaganda-2024-4/">
                 Подробнее →</router-link>
         </div>
     
@@ -19,19 +19,19 @@
     <script setup>
     
     const emits = defineEmits(['darkMode', 'lightMode'])
-    emits('lightMode')
+    emits('darkMode')
     </script>
     
 
 <style>
 
     .poster3 {
-        background-image: url('/covers/cover24-mobile.jpg');
+        background-image: url('/covers/cover18-mobile.jpg');
         padding: 0 1rem;
     }
     
     
-    .poster3 .box {
+    .poster3 .poster-inner {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -52,7 +52,7 @@
         font-family: var(--plain-text-font);
         font-size: 2rem;
         font-weight: 400;
-        color: #3E3561;
+        color: #FFF;
         margin-bottom: 1rem;
     }
 
@@ -63,14 +63,14 @@
     }
 
     
-    .poster3 .cover-button {
+    .poster3 .poster-button {
         margin: 2rem 0 0 0; 
     }
     
     @media only screen and (min-width: 1024px) {
     
     .poster3 {
-        background-image: url('/covers/cover24.jpg');
+        background-image: url('/covers/cover18.jpg');
     }
     .poster3 .header1 {
         width: 80%;
@@ -83,10 +83,9 @@
 
     .poster3 .header1 div:nth-child(2){
         font-size: 1.25rem;
-        color: #2D2D2D;
     }
 
-    .poster3 .cover-button {
+    .poster3 .poster-button {
         margin: 2rem 2rem 0 auto; 
     }
 }
@@ -97,7 +96,7 @@
 
 <!--<template>
     <div class="poster poster1">
-        <div class="box">
+        <div class="poster-inner">
         
         <div class="header1">
             <div class="poster-title">Конференция в Караганде</div>
@@ -108,7 +107,7 @@
             </div>
             <div class="poster-city"><img src="@/assets/address.svg">24 — 25 апреля</div>
             <div class="poster-date"><img src="@/assets/time-dark.svg">Гостиничный комплекс "Cosmonaut" по адресу ул. Аманжолова 162а</div>
-            <router-link class="cover-button" tag="div" to="/news/konferenziya-v-karagande-2024-4/">
+            <router-link class="poster-button" tag="div" to="/news/konferenziya-v-karagande-2024-4/">
                 Читать →</router-link>
         </div>
     
@@ -129,7 +128,7 @@
         padding: 0 1rem;
     }
     
-    .poster1 .box {
+    .poster1 .poster-inner {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -172,7 +171,7 @@
     .poster1 {
         background-image: url('/covers/cover14.jpg');
     }
-    .poster1 .box {
+    .poster1 .poster-inner {
         display: inline-flex;
         justify-content: center;
         align-items: flex-start;
@@ -198,12 +197,12 @@
 <!--<template>
 
     <div class="poster poster1">
-        <div class="box">
+        <div class="poster-inner">
         
         <div class="header1">
             <div>Успешно проведена Конференция «Секреты Женского Сердца»</div>
         <div>Уникальность конференции заключалась в ее гибридном формате, который позволил участникам принять участие как лично, так и через онлайн-платформу, обеспечивая максимальную доступность для всех заинтересованных лиц</div>
-        <router-link class="cover-button" tag="div" to="/news/proshla-konferentzya-secrety-zheskogo-serdtza-2024/">
+        <router-link class="poster-button" tag="div" to="/news/proshla-konferentzya-secrety-zheskogo-serdtza-2024/">
                 Подробнее →</router-link>
         </div>
     
@@ -219,7 +218,7 @@
     }
     
     
-    .poster1 .box {
+    .poster1 .poster-inner {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -251,7 +250,7 @@
     }
 
     
-    .poster1 .cover-button {
+    .poster1 .poster-button {
         margin: 2rem 0 0 0; 
     }
     
@@ -274,7 +273,7 @@
         color: #2D2D2D;
     }
 
-    .poster1 .cover-button {
+    .poster1 .poster-button {
         margin: 2rem 2rem 0 auto; 
     }
 }

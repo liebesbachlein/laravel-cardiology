@@ -1,11 +1,11 @@
 <template>
 
     <div class="poster poster4">
-        <div class="box">
+        <div class="poster-inner">
         
         <div class="header1">
             <div>Рекомендации по физическим нагрузкам для людей с артериальной гипертонией</div>
-            <a class="cover-button" tag="div" href="https://www.instagram.com/p/CtqZrrItrZ1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
+            <a class="poster-button" tag="div" href="https://www.instagram.com/p/CtqZrrItrZ1/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==">
                 Читать →</a>
         </div>
     
@@ -29,7 +29,7 @@
     }
     
     
-    .poster4 .box {
+    .poster4 .poster-inner {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -54,7 +54,7 @@
     }
 
     
-    .poster4 .cover-button {
+    .poster4 .poster-button {
         margin-top: 2rem;
     }
     

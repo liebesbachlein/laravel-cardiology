@@ -36,7 +36,7 @@
 </template>
 
 <script setup>
-import HomeHeader from './HomeHeader.vue'
+import HomeHeader from './HomeHeader.vue';
 import ChevronLeft from '@/components/ChevronLeft.vue';
 import ChevronRight from '@/components/ChevronRight.vue';
 import { ref, onMounted } from 'vue';

@@ -42,8 +42,8 @@
     </div>
     
     <div class="navbar-in-block mobile-side" @click="openSideMenu">
-      <div class="mobile-side-menu-box cover-slide-transition">
-        <div class="navbar-side-text cover-slide-transition">Меню</div>
+      <div class="mobile-side-menu-box carousel-transition">
+        <div class="navbar-side-text carousel-transition">Меню</div>
       </div>
     </div>
   </div>
@@ -177,7 +177,7 @@ export default {
   flex-wrap: nowrap;
   padding: 0.25rem;
   border-radius: 0.125rem;
-  border: 1px solid rgba(193, 209, 229, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.574);
   align-items: center;
 }
 
@@ -192,7 +192,7 @@ export default {
 .navbar-side-text {
   font-family: var(--news-title-font);
   font-size: 1rem;
-  color: #d4e5f5;
+  color: #ffffff;
   text-transform: uppercase;
 }
 
@@ -234,7 +234,7 @@ export default {
 }
 
 .nav-light-mode.home .divider {
-  color: #212331;
+  color: #1c1c1c;
 }
 
 .short {
@@ -295,7 +295,7 @@ export default {
 }
 
 .nav-light-mode.home .menu-item-round>a {
-  color: #212331;
+  color: #2d2d2d;
 }
 
 .navbar .menu-item-round {

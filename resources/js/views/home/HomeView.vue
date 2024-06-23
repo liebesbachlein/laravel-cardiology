@@ -35,8 +35,6 @@ function darkMode() {
 
 <style>
 
-
-
   .site-content {
     position: absolute;
     width: 100%;
@@ -47,8 +45,6 @@ function darkMode() {
     flex-direction: column;
     align-items: center;
   }
-
-  
 
   .site-content-in {
     width: 100%;
@@ -68,6 +64,6 @@ function darkMode() {
 
 .homeview {
     top: 0;
-  } /* MUST BE ON THE VERY BOTTOM */
+  } /* MUST BE AT THE VERY BOTTOM */
 
 </style>

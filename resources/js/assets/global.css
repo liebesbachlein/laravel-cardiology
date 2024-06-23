@@ -180,7 +180,7 @@ a.disabled-a {
 
 /*             Posters                 */
 
-.cover-button {
+.poster-button {
     height: 3.125rem;
     width: 11rem;
     border-radius: 0.25rem;
@@ -205,6 +205,7 @@ a.disabled-a {
     align-items: center;
     flex-wrap: nowrap;
     padding: 0 1rem;
+    z-index: 0;
 }
 
 
@@ -252,7 +253,7 @@ a.disabled-a {
 
 @media only screen and (min-width: 1024px) {
     
-    .cover-button:hover {
+    .poster-button:hover {
     color: var(--component-accent-color2)
 }
 

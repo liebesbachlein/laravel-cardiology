@@ -18,14 +18,14 @@
                        
                     </div>
                 </div>
-                <div class="footer-lang-box">
+                <!--<div class="footer-lang-box">
                     <div class="footer-lang-item-active" >
                         Русский
                     </div>
                     <div class="footer-lang-item" style="visibility: hidden;">
                         Қазақ
                     </div>
-                </div>
+                </div>-->
         </div>
 
         <div class="footer-lower">
@@ -80,7 +80,7 @@
     display: flex;
     justify-content: space-between;
     width: 60%;
-    margin: 2rem 0;
+    margin: 2rem 0 1rem 0;
 }
 
 .footer-links img {

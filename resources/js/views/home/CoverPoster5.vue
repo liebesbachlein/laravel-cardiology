@@ -1,7 +1,7 @@
 
 <template>
     <div class="poster poster5">
-            <div class="box">
+            <div class="poster-inner">
                
                 <div class="header1">
                     <div>Региональный тур</div>
@@ -16,7 +16,7 @@
                         Конференц-зал отеля «Dastan Hotel Aktobe», ул. Бокенбай батыра, 2, Актобе. </div>
                     <div class="poster-date"><img src="@/assets/time.svg">29 — 30 апреля</div>
                     
-                    <a class="cover-button" tag="div" href="/news/akamedia-aktobe-3-2024/">
+                    <a class="poster-button" tag="div" href="/news/akamedia-aktobe-3-2024/">
                         Подробнее →</a>
                     
                 </div>    
@@ -36,7 +36,7 @@
     
 
     
-    .poster5 .cover-button {
+    .poster5 .poster-button {
         width: 13rem;
     }
     
@@ -46,7 +46,7 @@
         background-image: url('/covers/cover19-mobile.jpg');
     }
     
-    .poster5 .box {
+    .poster5 .poster-inner {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -105,7 +105,7 @@
         background-image: url('/covers/cover19.jpg');
     }
     
-    .poster5 .box {
+    .poster5 .poster-inner {
         display: inline-flex;
         justify-content: center;
         align-items: flex-start;

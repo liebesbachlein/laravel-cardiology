@@ -20,7 +20,7 @@ export default {
 .home-header {
     font-size: 1.75rem;
     margin-left: 1.5rem;
-    font-weight: 600;
+    font-weight: 500;
     display: inline-block;
     font-family: var(--messiri-font);
     color: #2D2D2D;
