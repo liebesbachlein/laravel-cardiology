@@ -1,10 +1,7 @@
 <template>
     <div class="newstimeline">
         <div class="site-content-in">
-            <HomeHeader
-                title="Прошедшие мероприятия"
-                style="margin-bottom: 1.5rem"
-            />
+            <HomeHeader title="Мероприятия" style="margin-bottom: 1.5rem" />
 
             <div class="sticky-box" id="circle">
                 <div class="linecircle_fixed">
@@ -76,15 +73,16 @@ const months = [
 
 const data = [
     {
-        date_start: 19,
-        date_end: 20,
-        month: 9,
-        year: 2024,
-        title: "7-й Республиканский Конгресс по артериальной гипертонии и кардиоваскулярной профилактике",
-        address: "Отель DoubleTree Hilton, Алматы",
+        date_start: 4,
+        date_end: 5,
+        month: 4,
+        year: 2025,
+        title: "Региональная школа «Коморбидность в клинической практике» в Кызылорде",
+        address:
+            "ул. Сырбая Мауленова, 34, коворкинг-центр «SevenBro», Кызылорда",
         details:
             "Не упустите шанс присоединиться к этому значимому мероприятию, где вы сможете не только обогатить свои знания, но и приобрести практические навыки, необходимые для успешной работы в области сердечно-сосудистой медицины. ",
-        url: "/news/konferenziya-almaty-2024-8/",
+        url: "/news/shkola-kyzylorda-2025-4/",
     },
 ];
 

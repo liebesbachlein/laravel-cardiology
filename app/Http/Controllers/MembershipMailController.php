@@ -16,7 +16,7 @@ class MembershipMailController extends Controller
 
     public function sendMail(Request $request)
     {
-        $data = array( 
+        $data = array(
             'last_name'=>$request-> last_name,
             'first_name'=>$request-> first_name,
             'patro_name'=>$request-> patro_name,
@@ -35,7 +35,8 @@ class MembershipMailController extends Controller
             'date_member'=>$request-> date_member,
             'terms'=>$request-> terms
         );
-        
+
+        Mail::to('ashypertension.kz.ok@gmail.com')->send(new MembershipMail($data));
         Mail::to('gerardinearmstrong@gmail.com')->queue(new MembershipMail($data));
         //Mail::to('aigerim.tuishieva@nu.edu.kz')->later(now()->addMinutes(10), new MembershipMail($data));
 

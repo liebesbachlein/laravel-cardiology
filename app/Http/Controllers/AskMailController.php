@@ -17,7 +17,7 @@ class AskMailController extends Controller
 
     public function sendMail(Request $request)
     {
-        $data = array( 
+        $data = array(
             'name'=>$request->name,
             'email'=>$request->email,
             'content'=>$request->content
