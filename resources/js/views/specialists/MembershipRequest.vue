@@ -714,23 +714,23 @@ textarea:focus {
 }
 
 
-  form {
-      display: block;
-      width: 100%;
-      margin: 4rem 0 6rem 0;
-      background: #FFF;
-      text-align: left;
-      padding: 3rem 1rem;
-      border-radius: 0.5rem;
-  }
+form {
+    display: block;
+    width: 100%;
+    margin: 4rem 0 6rem 0;
+    background: #FFF;
+    text-align: left;
+    padding: 3rem 1rem;
+    border-radius: 0.5rem;
+}
 
-  .greyback .site-content-in {
+.greyback .site-content-in {
   padding: 0 0.5rem;
- } 
+} 
 
- .greyback .breadcrumbs-box {
+.greyback .breadcrumbs-box {
   display: none;
- }
+}
 
 
 @media only screen and (min-width: 1024px) {

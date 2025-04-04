@@ -1,4 +1,29 @@
 <template>
+    <div class="banner_video">
+        <video autoplay muted loop playsinline>
+            <source src="/iphone_16_pro.mp4" type="video/mp4" />
+            Ваш браузер не поддерживает video тег.
+        </video>
+    </div>
+</template>
+
+<script>
+    export default {
+
+    }
+</script>
+
+<style>
+.banner_video video {
+    width: 100%;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    display: block;
+}
+
+</style>
+
+<template>
     <div v-if="numberOfSlides > 1" class="carousel-arrow carousel-arrow-left">
         <div class="carousel-arrow-inner" :class="lightMode 
         ? 'carousel-arrow-light-mode' : ''" 
